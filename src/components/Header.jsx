@@ -62,18 +62,18 @@ export default function Header() {
           >
             Product List
           </Link>
-          <a href="#" className="text-sm/6 font-semibold text-white">
+          <Link href="#" className="text-sm/6 font-semibold text-white">
             Marketplace
-          </a>
-          <a href="#" className="text-sm/6 font-semibold text-white">
+          </Link>
+          <Link href="#" className="text-sm/6 font-semibold text-white">
             Company
-          </a>
+          </Link>
         </PopoverGroup>
-        <div className="hidden lg:flex lg:flex-1 lg:justify-end">
+        <section className="hidden lg:flex lg:flex-1 lg:justify-end">
           <a href="#" className="text-sm/6 font-semibold text-white">
             Log in <span aria-hidden="true">&rarr;</span>
           </a>
-        </div>
+        </section>
       </nav>
     </header>
   );
