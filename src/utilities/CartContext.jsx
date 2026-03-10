@@ -22,12 +22,20 @@ const CartContext = ({ children }) => {
     if (existingItem) {
       updatedCart = cartData.map((item) => {
         if (item.id === product.id) {
-          return { ...item, quantity: item.quantity + 1 }
+          let quantity;
+          if (item.quantity === 5) {
+            toast.error("Maximum quantity can not be more than 5!")
+            return item;
+          } else {
+            quantity = item.quantity + 1;
+            toast.success("Item quantity increased!");
+          }
+          return { ...item, quantity }
         } else {
           return item
         }
       });
-      toast.success("Item quantity increased!");
+
     } else {
       let newItem = {
         name: product.name,
