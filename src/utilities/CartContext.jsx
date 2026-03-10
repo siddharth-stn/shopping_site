@@ -84,7 +84,14 @@ const CartContext = ({ children }) => {
     }
   }
 
-  const data = { cartData, setCartData, addToCart, updateQuantity }
+  function removeFromCart(itemId) {
+    const updatedCart = cartData.filter((v) => v.id !== itemId);
+    toast.success("Item removed Successully!");
+    setCartData(updatedCart);
+    localStorage.setItem('cart_data', JSON.stringify(updatedCart));
+  }
+
+  const data = { cartData, setCartData, addToCart, updateQuantity, removeFromCart }
 
   return (
     <CreatedCartContext.Provider value={data}>
