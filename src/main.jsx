@@ -8,6 +8,7 @@ import ProductDetails from "./pages/ProductDetails";
 import ProductList from "./pages/ProductList";
 import CartContext from "./utilities/CartContext";
 import { ToastContainer } from "react-toastify";
+import ViewCart from "./pages/ViewCart";
 
 
 createRoot(document.getElementById("root")).render(
@@ -23,7 +24,9 @@ createRoot(document.getElementById("root")).render(
               path="product-details/:productId"
               element={<ProductDetails />}
             />
+            <Route path="view-cart" element={<ViewCart />} />
           </Route>
+
         </Routes>
       </BrowserRouter>
     </CartContext>

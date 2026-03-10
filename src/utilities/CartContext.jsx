@@ -44,7 +44,39 @@ const CartContext = ({ children }) => {
     localStorage.setItem('cart_data', JSON.stringify(updatedCart));
   }
 
-  const data = { cartData, setCartData, addToCart }
+  function updateQuantity(itemToUpdate, type) {
+    if (type === "minus") {
+      if (itemToUpdate.quantity > 1) {
+        const updatedCart = cartData.map((i) => {
+          if (itemToUpdate.id === i.id) {
+            return { ...itemToUpdate, quantity: itemToUpdate.quantity - 1 };
+          } else {
+            return i;
+          }
+        });
+        setCartData(updatedCart);
+        localStorage.setItem('cart_data', JSON.stringify(updatedCart));
+      } else {
+        toast.error("Minimum 1 quantity required!")
+      }
+    } else {
+      if (itemToUpdate.quantity < 5) {
+        const updatedCart = cartData.map((i) => {
+          if (itemToUpdate.id === i.id) {
+            return { ...itemToUpdate, quantity: itemToUpdate.quantity + 1 };
+          } else {
+            return i;
+          }
+        });
+        setCartData(updatedCart);
+        localStorage.setItem('cart_data', JSON.stringify(updatedCart));
+      } else {
+        toast.error("Maximum 5 quantity can be added!")
+      }
+    }
+  }
+
+  const data = { cartData, setCartData, addToCart, updateQuantity }
 
   return (
     <CreatedCartContext.Provider value={data}>

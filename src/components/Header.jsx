@@ -73,7 +73,7 @@ export default function Header() {
           </Link>
         </PopoverGroup>
         <section className="hidden lg:flex lg:flex-1 lg:justify-end items-center">
-          <Link className="text-white mr-5">
+          <Link to="/view-cart" className="text-white mr-5">
             <button className="border border-amber-100 px-4 py-2 rounded-xl hover:bg-white hover:text-black cursor-pointer">View Cart ({cartData.length})</button>
           </Link>
           <a href="#" className="text-sm/6 font-semibold text-white">
