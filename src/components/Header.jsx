@@ -24,10 +24,13 @@ import {
   PlayCircleIcon,
 } from "@heroicons/react/20/solid";
 import { Link } from "react-router";
+import { useContext } from "react";
+import { CreatedCartContext } from "../utilities/CartContext";
 
 export default function Header() {
+  const { cartData } = useContext(CreatedCartContext)
   return (
-    <header className="bg-gray-900">
+    <header className="bg-gray-900 sticky top-0 z-3">
       <nav
         aria-label="Global"
         className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8"
@@ -69,7 +72,10 @@ export default function Header() {
             Company
           </Link>
         </PopoverGroup>
-        <section className="hidden lg:flex lg:flex-1 lg:justify-end">
+        <section className="hidden lg:flex lg:flex-1 lg:justify-end items-center">
+          <Link className="text-white mr-5">
+            <button className="border border-amber-100 px-4 py-2 rounded-xl hover:bg-white hover:text-black cursor-pointer">View Cart ({cartData.length})</button>
+          </Link>
           <a href="#" className="text-sm/6 font-semibold text-white">
             Log in <span aria-hidden="true">&rarr;</span>
           </a>
