@@ -46,11 +46,12 @@ export default function ProductList() {
   const [filterCategories, setFilterCategories] = useState([]);
   const [brands, setBrands] = useState([])
   const [filterBrands, setFilterBrands] = useState([])
-  const [priceFrom, setPriceFrom] = useState(0);
-  const [priceTo, setPriceTo] = useState(0);
+  const [priceFrom, setPriceFrom] = useState('');
+  const [priceTo, setPriceTo] = useState('');
 
 
   useEffect(() => {
+
     axios.get("https://wscubetech.co/ecommerce-api/brands.php")
       .then((response) => {
         setBrands(response.data.data);

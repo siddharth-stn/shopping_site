@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import { CreatedCartContext } from "../utilities/CartContext";
 
 
@@ -6,15 +6,9 @@ const ViewCart = () => {
 
   const { cartData, updateQuantity, removeFromCart } = useContext(CreatedCartContext);
 
-  const [totalPrice, setTotalPrice] = useState(0);
-
-  useEffect(() => {
-    let sum = 0;
-    cartData.forEach((item) => {
-      sum += (item.quantity * item.price);
-    });
-    setTotalPrice(sum)
-  }, [cartData])
+  const totalPrice = cartData.reduce((sum, item) => {
+    return sum + (item.quantity * item.price);
+  }, 0)
 
   return (
     <div>
